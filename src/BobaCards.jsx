@@ -7,9 +7,10 @@ import database from "./firebase"
 
 
 function BobaCards() {
-
+    // Locks Scrolling in the body
     useLockBodyScroll();
 
+    // The useState & UseEffect are use to implement the firebase Database
     const [boba, setBoba] = useState([]);
 
     useEffect(() => {
