@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@react-spring/web": "^9.5.5",
+    "@uidotdev/usehooks": "^2.4.1",
     "firebase": "^10.11.1",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",

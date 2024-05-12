@@ -12,3 +12,4 @@
 - Vite ('npm install vite')
 - Install react-tinder-card (https://www.npmjs.com/package/react-tinder-card) --> swiping motion for the tinder cards
 - Install firebase ('npm i firebase' or 'npm install firebase')
+- Installed useLockBodyScroll (website: https://usehooks.com/uselockbodyscroll#:~:text=The%20useLockBodyScroll%20hook%20temporarily%20disables,that%20requires%20the%20user's%20focus.)

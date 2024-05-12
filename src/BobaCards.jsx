@@ -2,10 +2,13 @@
 import React, { useEffect, useState } from "react"
 import './styles/BobaCards.css'
 import TinderCard from 'react-tinder-card'
+import { useLockBodyScroll } from "@uidotdev/usehooks";
 // import database from "./firebase"
 
 
 function BobaCards() {
+
+    useLockBodyScroll();
 
     // const [boba, setBoba] = useState([]);
 
@@ -16,7 +19,6 @@ function BobaCards() {
     //     ))
 
     // }, []);
-
 
     //  Hard Coded
 
@@ -56,6 +58,10 @@ function BobaCards() {
             </div>
         </div >
     );
+
+    const div = document.getElementsByTagName('div')[0];
+    bodyScrollLockUpgrade.disableBodyScroll(div);
+
 }
 
 export default BobaCards
