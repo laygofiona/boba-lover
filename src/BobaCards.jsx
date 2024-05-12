@@ -1,6 +1,8 @@
 // The Header Component -- file is capitalized because it is an component
 import React from 'react'
 import './styles/BobaCards.css'
+import TinderCard from 'react-tinder-card'
+import database from "./firebase"
 
 
 function BobaCards() {
