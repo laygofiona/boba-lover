@@ -9,6 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
+    "@mui/material": "^5.15.17",
     "@react-spring/web": "^9.5.5",
     "@uidotdev/usehooks": "^2.4.1",
     "firebase": "^10.11.1",

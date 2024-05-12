@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Header from "./Header";
 import './styles/App.css'
 import BobaCards from './BobaCards'
 
@@ -7,6 +8,8 @@ function App() {
 
   return (
     <div className="App">
+      {/* shall we use the BEM naming convention for this project? */}
+      <Header />
       {/* Components can be added here, we can use css grid to design the layout of the components */}
       {/* will need design/figma pages for reference */}
       {/* added hello world to make sure the app works, feel free to remove all this code */}
