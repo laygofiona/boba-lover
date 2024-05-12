@@ -34,8 +34,9 @@ function BobaCards() {
 
     return (
         <div>
-            <div className="cards">
-                <p> TinderCards 🔥</p>
+            <p> TinderCards 🔥</p>
+
+            <div className="cardContainer">
                 {boba.map(tea => (
                     <TinderCard className="swipe"
                         // Key very important in React
