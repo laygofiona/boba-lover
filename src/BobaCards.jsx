@@ -3,38 +3,22 @@ import React, { useEffect, useState } from "react"
 import './styles/BobaCards.css'
 import TinderCard from 'react-tinder-card'
 import { useLockBodyScroll } from "@uidotdev/usehooks";
-// import database from "./firebase"
+import database from "./firebase"
 
 
 function BobaCards() {
 
     useLockBodyScroll();
 
-    // const [boba, setBoba] = useState([]);
+    const [boba, setBoba] = useState([]);
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     database.collection('BobaTea').onSnapshot(snapshot => (
-    //         setPeople(snapshot.docs.map(doc => doc.data()))
-    //     ))
+        database.collection('BobaTea').onSnapshot(snapshot => (
+            setBoba(snapshot.docs.map(doc => doc.data()))
+        ))
 
-    // }, []);
-
-    //  Hard Coded
-
-    const [boba, setBoba] = useState([
-        {
-            name: "BoboTea Strawberry",
-            url: "https://i.ibb.co/6DBMG0M/Screenshot-2024-05-11-211740.png",
-            shop: "BoboTea"
-        },
-        {
-            name: "Chatime Standard Milk Tea",
-            url: "https://api.vip.foodnetwork.ca/wp-content/uploads/2024/04/Chatime-Sakura-Bloom-Feat.png?w=3840&quality=75",
-            shop: "Chatime"
-        },
-    ]);
-
+    }, []);
 
     return (
         <div>
@@ -58,9 +42,6 @@ function BobaCards() {
             </div>
         </div >
     );
-
-    const div = document.getElementsByTagName('div')[0];
-    bodyScrollLockUpgrade.disableBodyScroll(div);
 
 }
 
