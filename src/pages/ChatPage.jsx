@@ -87,4 +87,4 @@ function ChatPage() {
   )
 }
 
-export default Chatpage
+export default ChatPage
