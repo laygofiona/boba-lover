@@ -2,6 +2,12 @@ import { useState, useEffect } from 'react'
 import '../styles/ChatPage.css'
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator, ConversationHeader, Avatar, MessageSeparator } from '@chatscope/chat-ui-kit-react';
+import { CohereClient } from 'cohere-ai';
+import {VITE_Cohere_APIKEY } from '.env';
+
+const cohere = new CohereClient({
+  token: {VITE_Cohere_APIKEY},
+});
 
 function ChatPage({ shop_name, shop_logo}) {
 
