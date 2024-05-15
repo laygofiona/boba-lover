@@ -1,23 +1,24 @@
 import { useState } from 'react'
 import Header from "./Header";
 import './styles/App.css'
-import BobaCards from './BobaCards'
-// import ChatPage from './pages/ChatPage';
-import { Navigate, BrowserRouter, RouterProvider, Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import ProfilePage from './pages/ProfilePage';
+import { Route, Routes } from "react-router-dom"
+import ChatsList from './pages/ChatsList'
 
 function App() {
   
   return (
-    <div className="App">  
-    <Header />
-    <BrowserRouter>
-      <Routes>
-        <Route exact path="/" element={<Navigate to="/home" />} />
-        <Route path="/home" element={<BobaCards />} />
-        {/* <Route path="/chat" element={<ChatPage />} /> */}
-      </Routes>
-    </BrowserRouter>
-
+    <div className="App">
+      {/* shall we use the BEM naming convention for this project? Yes*/}
+      <Header />
+      <div className="routes">
+        <Routes>
+          <Route path="/profile" element={<ProfilePage />}/>
+          <Route path="/" element={<HomePage />}/>
+          <Route path="/chats" element={<ChatsList />} />
+        </Routes>
+      </div>
       {/* Components can be added here, we can use css grid to design the layout of the components */}
       {/* will need design/figma pages for reference */}
       {/* added hello world to make sure the app works, feel free to remove all this code */}
