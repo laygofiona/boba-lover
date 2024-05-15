@@ -5,14 +5,18 @@ import { MainContainer, ChatContainer, MessageList, Message, MessageInput, Typin
 import { CohereClient } from 'cohere-ai';
 
 const cohere = new CohereClient({
-  token: import.meta.env.VITE_Cohere_APIKEY
+  // your API key goes below
+  // for reference:
+  // token: "YOUR_APIKEY_HERE"
+  token: import.meta.env.VITE_Cohere_APIKEY,
 });
-
 
 const generateMessage = async (shop_name, req_prompt) => {
   const prediction = await cohere.generate({
+      model: "",
       prompt: `${req_prompt}`,
       preamble: `You are a boba shop named ${shop_name}, you have already asked the user if they need help with anything. Assist them.`,
+      length: 15,
       maxTokens: 20,
   });
   
@@ -21,7 +25,7 @@ const generateMessage = async (shop_name, req_prompt) => {
 
 };
 
-function ChatPage({ shop_name, shop_logo}) {
+function ChatPage({shop_name, shop_logo}) {
 
   // Hardcoded values used for testing
 
