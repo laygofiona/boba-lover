@@ -39,8 +39,6 @@ function BobaCards() {
 
     return (
         <div>
-            <p> TinderCards 🔥</p>
-
             <div className="cardContainer">
                 {boba.map(tea => (
                     <TinderCard className="swipe"
@@ -50,8 +48,8 @@ function BobaCards() {
                         preventSwipe={['up', 'down']}
                         onCardLeftScreen={(direction) => onCardLeftScreen(direction, tea)}
                         flickOnSwipe
-                    // swipeRequirementType="velocity" // Evaluate direction based on the direction of the swiping movement
-                    // swipeThreshold={1} // Set a lower threshold for faster swipes
+                        swipeRequirementType="velocity" // Evaluate direction based on the direction of the swiping movement
+                        swipeThreshold={1.1} // Set a lower threshold for faster swipes
                     >
                         <div
                             style={{ backgroundImage: `url(${tea.url})`, backgroundColor: `${tea.color}` }}
@@ -61,7 +59,7 @@ function BobaCards() {
                     </TinderCard>
                 ))}
             </div>
-            {/* Display shop counts */}
+            {/* Display shop counts - ONLY FOR TESTING PURPOSES */}
             <div>
                 <h2>Shop Counts:</h2>
                 <ul>
@@ -70,6 +68,7 @@ function BobaCards() {
                     ))}
                 </ul>
             </div>
+
         </div >
     );
 

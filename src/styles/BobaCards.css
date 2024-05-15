@@ -3,14 +3,14 @@
     padding: 1em;
     max-width: 85vw;
     width: 25.7em;
-    height: 65vh;
+    height: 70vh;
     border-radius: 0.5em;
     margin: auto;
 
     background-size: cover;
     background-position: center;
 
-    box-shadow: 0 0.3em 1em 0 rgba(61, 59, 59, 0.3);
+    box-shadow: 0.03em 0.01em 0.3em 0.03em rgba(61, 59, 59, 0.3);
     background-color: #F2DAC4;
 }
 
@@ -26,13 +26,13 @@
 
 .card>h3 {
     position: absolute;
-    bottom: 0.3em;
-    margin: 0.8em 0em;
-    padding: 1em;
+    bottom: 0.03em;
+    left: 0.01em;
+    margin: 1em;
+    padding: 0.8em;
     border-radius: 0.5em;
     background-color: #021944;
     border: #eceaee 0.1em solid;
     color: #eceaee;
     text-align: center;
-
 }
