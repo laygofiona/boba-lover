@@ -3,11 +3,23 @@ import '../styles/ChatPage.css'
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator, ConversationHeader, Avatar, MessageSeparator } from '@chatscope/chat-ui-kit-react';
 import { CohereClient } from 'cohere-ai';
-import {VITE_Cohere_APIKEY } from '.env';
 
 const cohere = new CohereClient({
-  token: {VITE_Cohere_APIKEY},
+  token: import.meta.env.VITE_Cohere_APIKEY
 });
+
+
+const generateMessage = async (shop_name, req_prompt) => {
+  const prediction = await cohere.generate({
+      prompt: `${req_prompt}`,
+      preamble: `You are a boba shop named ${shop_name}, you have already asked the user if they need help with anything. Assist them.`,
+      maxTokens: 20,
+  });
+  
+  console.log("Received prediction", prediction);
+  console.log(prediction.generations[0].text)
+
+};
 
 function ChatPage({ shop_name, shop_logo}) {
 
@@ -46,7 +58,7 @@ function ChatPage({ shop_name, shop_logo}) {
     //update message state
     setMessages(newMessages);
     setIsTyping(true);
-
+    await generateMessage(shop_name, message);
     await processMessageToChatbot(newMessages);
 
   }
