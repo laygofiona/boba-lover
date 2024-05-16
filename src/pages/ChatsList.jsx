@@ -2,36 +2,49 @@ import { useState, useEffect } from 'react'
 import '../styles/ChatPage.css'
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, Search, Sidebar, ConversationList, Conversation, Avatar } from '@chatscope/chat-ui-kit-react';
-import ChatPage from './ChatPage';
+import ChaTimeChat from './ChaTimeChat'
+import BoboTeaChat from './BoboTeaChat'
+import ChatbotChat from './ChatbotChat';
 
 function ChatsList() {
-    const [shops, setShops] = useState([]);
+    const [chats, setChats] = useState([]);
     const [searchInput, setSearchInput] = useState("");
-    const [selectedShop, setSelectedShop] = useState({});
+    const [selectedChat, setSelectedChat] = useState({});
 
-    const getBobaShops = () => {
+
+
+    const getChats = () => {
         // Use fetch API to get data from database
         // Set retrieved data to setShops
         // For testing purposes: I'll create a sample array
-        let data_arr = [{
+        let shops = [{
             name: "Bobo Tea",
             logo: "https://svgnation.com/wp-content/uploads/2022/05/boba-tea-svg-free.jpg",
-            slogan: "Some slogan 1"
+            slogan: "Sip happiness, one bubble at a time.",
+            chatComponent: <BoboTeaChat key="Bobo Tea" />
         }, {
             name: "Cha Time",
             logo: "https://shopsquareone.com/wp-content/uploads/2021/09/ded478c109b673e1dd6c17a4eaffe9c5d3d085a9.png",
-            slogan: "Some slogan 2"
-        }, {
-            name: "Milk Tea",
-            logo: "https://assets.epicurious.com/photos/5953ca064919e41593325d97/1:1/w_2560%2Cc_limit/bubble_tea_recipe_062817.jpg",
-            slogan: "Some slogan 3"
-        }];
+            slogan: "Pearls of joy, in every sip.",
+            chatComponent: <ChaTimeChat key="Cha Time" />
+        }, 
+        ];
 
-        setShops(data_arr);
-        setSelectedShop({
-            name: data_arr[0].name,
-            logo: data_arr[0].logo,
-            slogan: data_arr[0].slogan
+        // add chatbot to data_arr
+        shops.unshift({
+            name: "Boba Lover bot",
+            logo: "https://cdn-icons-png.flaticon.com/512/4645/4645924.png",
+            slogan: "Your own boba-loving bot.",
+            chatComponent: <ChatbotChat key="Chatbot" />
+        })
+
+        setChats(shops);
+
+        // By default set the selected chat to the boba bot
+        setSelectedChat({
+            name: shops[0].name,
+            logo: shops[0].logo,
+            slogan: shops[0].slogan
         });
     }
 
@@ -42,40 +55,41 @@ function ChatsList() {
     useEffect(() => {
         if(searchInput !== "")
         {
-            const newShops = shops.filter((shop) => searchInput.toLowerCase() == shop.name.toLowerCase());
-            if (newShops.length > 0)
+            const newChats = chats.filter((chat) => searchInput.toLowerCase() == chat.name.toLowerCase());
+            if (newChats.length > 0)
             {
-                setShops(newShops);
+                setChats(newChats);
             }
         }
         else
         {
-            // set Shops to default data
-            getBobaShops();
+            // set chats to default data
+            getChats();
         }
     }, [searchInput])
 
-    // When page is loaded, retrieve list of boba shops that the user swiped right on
+    // Ideally When page is loaded, retrieve list of boba shops including chats that the user swiped right on
     useEffect(() => {
-        getBobaShops();
+        getChats();
     }, [])
 
     function handleClick(event) {
         const selectedName =  event.currentTarget.children[1].children[0].textContent;
         let result;
-        shops.map(shop => {
-            if(shop.name.toLowerCase() == selectedName.toLowerCase())
+        chats.map(chat => {
+            if(chat.name.toLowerCase() == selectedName.toLowerCase())
             {
                 result = {
-                    name: shop.name,
-                    logo: shop.logo,
-                    slogan: shop.slogan
+                    name: chat.name,
+                    logo: chat.logo,
+                    slogan: chat.slogan
                 }
             }
         });
-        setSelectedShop(result);
+        setSelectedChat(result);
         
     }
+
 
     return(
         <div className="main-container">
@@ -83,26 +97,34 @@ function ChatsList() {
                 <Sidebar position="left" value={searchInput} onChange={handleInput}>
                     <Search placeholder="Search..." />
                     <ConversationList>
-                        {shops.map((shop, i) => {
+                        {chats.map((chat, i) => {
                             return <Conversation 
-                            info={shop.slogan}
-                            name={shop.name}
+                            info={chat.slogan}
+                            name={chat.name}
                             key={i}
                             onClick={(event) => handleClick(event)}
                           >
                             <Avatar
-                              name={shop.name}
-                              src={shop.logo}
+                              name={chat.name}
+                              src={chat.logo}
                               status="available"
                             />
                           </Conversation>
                         })}
                     </ConversationList>
                 </Sidebar>
-                <ChatPage shop_name={selectedShop.name} shop_logo={selectedShop.logo}/>
+                {
+                    chats.map((chat) => {
+                        if(selectedChat.name.toLowerCase() == chat.name.toLowerCase())
+                        {
+                            return chat.chatComponent;
+                        }
+                    })
+                }
             </MainContainer>
         </div>
     )
 }
 
 export default ChatsList
+

@@ -111,7 +111,7 @@ function ChatPage({shop_name, shop_logo}) {
           <ConversationHeader.Content info="Active now" userName={shop_name}/>
             </ConversationHeader>
               <MessageList scrollBehavior="smooth" typingIndicator={isTyping ? <TypingIndicator content="BoBo tea is typing" /> : null}>
-              <MessageSeparator content={formattedDate}/>
+              <MessageSeparator content="New Conversation"/>
                 {messages.map((message, i) => {
                   if(message.sender == shop_name)
                   {
