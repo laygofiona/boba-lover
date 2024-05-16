@@ -12,17 +12,19 @@ const cohere = new CohereClient({
 });
 
 const generateMessage = async (shop_name, req_prompt) => {
-  const prediction = await cohere.generate({
-      model: "",
-      prompt: `${req_prompt}`,
-      preamble: `You are a boba shop named ${shop_name}, you have already asked the user if they need help with anything. Assist them.`,
-      length: 15,
-      maxTokens: 20,
-  });
-  
-  console.log("Received prediction", prediction);
-  console.log(prediction.generations[0].text)
 
+  const prediction = await cohere.chat({
+    message: `${req_prompt}`,
+    preamble: `You are a boba shop named ${shop_name}. Your aim is to help the customer understand what our company's aims are. Assist the customer by providing a concise reponse. Keep it to under 20 words.`,
+    // model: "",
+    // connectors:[{"id": "web-search"}],
+      // length: 10,
+      // maxTokens: 50,
+  });
+
+  console.log("Received prediction", prediction);
+  console.log(prediction.text)
+  return(prediction.text)
 };
 
 function ChatPage({shop_name, shop_logo}) {
