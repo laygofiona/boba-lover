@@ -77,20 +77,27 @@ function ChatPage({shop_name, shop_logo}) {
       direction: "outgoing"
     }
 
-    const newMessages = [...messages, newMessage]
-
+    let newMessages = [...messages, newMessage]
 
     //update message state
     setMessages(newMessages);
     setIsTyping(true);
-    const returnedMsg = await generateMessage(shop_name, message);
-    await processMessageToChatbot(newMessages);
+
+    const CohereMsg = await processMessageToChatbot(message);
+    
+    newMessages = [...messages, newMessage, CohereMsg]
+    setMessages(newMessages)
     setIsTyping(false);
-
   }
-
-  async function processMessageToChatbot(chatMessages) {
-
+  
+  async function processMessageToChatbot(chatMessage) {
+    const newReturnedMsg = {
+      message: await generateMessage(shop_name, chatMessage),
+      sender: shop_name,
+      direction: "incoming"
+    }
+    return(newReturnedMsg);
+ 
   }
 
 
