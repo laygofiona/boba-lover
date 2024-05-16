@@ -64,7 +64,7 @@ function ChatPage({shop_name, shop_logo}) {
   const [isTyping, setIsTyping] = useState(false);
 
   const [messages, setMessages] = useState([{
-    message: `Hello! How can I help you?`,
+    message: `Hello! I'm a certified Boba-Lover! How can I help you today?`,
     sentTime: "just now",
     sender: shop_name,
     direction: "incoming"
@@ -83,8 +83,9 @@ function ChatPage({shop_name, shop_logo}) {
     //update message state
     setMessages(newMessages);
     setIsTyping(true);
-    await generateMessage(shop_name, message);
+    const returnedMsg = await generateMessage(shop_name, message);
     await processMessageToChatbot(newMessages);
+    setIsTyping(false);
 
   }
 
