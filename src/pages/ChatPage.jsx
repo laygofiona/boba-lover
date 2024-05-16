@@ -13,9 +13,28 @@ const cohere = new CohereClient({
 
 const generateMessage = async (shop_name, req_prompt) => {
 
+  const documents = [
+    { 
+      "question": "What is BobaLover?", 
+      "answer": "BobaLover is a platform created by the members of a passionate team, that aims to curate an experience for people trying out boba for the first-time and for professional boba-lovers alike." 
+    },
+    { 
+      "question": "What is our aim?", 
+      "answer": "We wish to see a world where people invested in the boba experience have a place to start their journey. A place for them to belong." 
+    },
+    { 
+      "question": "What are our capabilities?", 
+      "answer": "Our app keeps track of the boba stores that you've liked, and allows you to communicate with them! This creates a personalised experience for the viewer." 
+    },
+    { 
+      "question": "What is our future?", 
+      "answer": "We plan to extend this app and branch into an environment where boba-lovers can interact with each other and plan boba-dates together! Furthermore, we plan to use an algorithm to sort and display boba locations based on your previous choices, helping you find more stores and flavours based on your previous choices." 
+    },
+  ];
   const prediction = await cohere.chat({
     message: `${req_prompt}`,
-    preamble: `You are a boba shop named ${shop_name}. Your aim is to help the customer understand what our company's aims are. Assist the customer by providing a concise reponse. Keep it to under 20 words.`,
+    preamble: `You are a chatbot for an app called 'BobaLover'! Your aim is to help the customer understand what our company's aims are. Assist the customer by providing a concise reponse. Keep it to under 30 words unless referring to documentation.`,
+    documents: documents
     // model: "",
     // connectors:[{"id": "web-search"}],
       // length: 10,
