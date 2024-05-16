@@ -11,7 +11,7 @@ const cohere = new CohereClient({
   token: import.meta.env.VITE_Cohere_APIKEY,
 });
 
-const generateMessage = async (shop_name, req_prompt) => {
+const generateMessage = async (req_prompt) => {
 
   const documents = [
     { 
@@ -77,20 +77,26 @@ function ChatPage({shop_name, shop_logo}) {
       direction: "outgoing"
     }
 
-    const newMessages = [...messages, newMessage]
-
+    let newMessages = [...messages, newMessage]
 
     //update message state
     setMessages(newMessages);
     setIsTyping(true);
-    const returnedMsg = await generateMessage(shop_name, message);
-    await processMessageToChatbot(newMessages);
+    
+    const CohereMsg = await processMessageToChatbot(message);
+    
+    newMessages = [...newMessages, CohereMsg];
+    setMessages(newMessages);
     setIsTyping(false);
-
   }
-
-  async function processMessageToChatbot(chatMessages) {
-
+  
+  async function processMessageToChatbot(chatMessage) {
+    const newReturnedMsg = {
+      message: await generateMessage(chatMessage),
+      sender: shop_name,
+      direction: "incoming"
+    }
+    return(newReturnedMsg);
   }
 
 
