@@ -10,7 +10,6 @@ function App() {
   
   return (
     <div className="App">
-      {/* shall we use the BEM naming convention for this project? Yes*/}
       <Header />
       <div className="routes">
         <Routes>
