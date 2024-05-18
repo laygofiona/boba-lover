@@ -38,7 +38,7 @@ function BobaCards() {
     }
 
     return (
-        <div>
+        <div className="cardBackground">
             <div className="cardContainer">
                 {boba.map(tea => (
                     <TinderCard className="swipe"
@@ -60,14 +60,14 @@ function BobaCards() {
                 ))}
             </div>
             {/* Display shop counts - ONLY FOR TESTING PURPOSES */}
-            <div>
+            {/* <div>
                 <h2>Shop Counts:</h2>
                 <ul>
                     {Object.entries(shopCounts).map(([shop, count]) => (
                         <li key={shop}>{shop}: {count}</li>
                     ))}
                 </ul>
-            </div>
+            </div> */}
 
         </div >
     );
