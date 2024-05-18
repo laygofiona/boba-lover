@@ -32,7 +32,7 @@ function ChatsList() {
 
         // add chatbot to data_arr
         shops.unshift({
-            name: "Boba Lover bot",
+            name: "Boba Lover Bot",
             logo: "https://cdn-icons-png.flaticon.com/512/4645/4645924.png",
             slogan: "Your own boba-loving bot.",
             chatComponent: <ChatbotChat key="Chatbot" />

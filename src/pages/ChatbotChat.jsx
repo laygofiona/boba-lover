@@ -54,7 +54,7 @@ function ChatbotChat() {
   const [messages, setMessages] = useState([{
     message: `Hello! I'm a certified Boba-Lover! How can I help you today?`,
     sentTime: "just now",
-    sender: "Boba Lover",
+    sender: "Boba Lover Bot",
     direction: "incoming"
   }]);
 
@@ -82,7 +82,7 @@ function ChatbotChat() {
   async function processMessageToChatbot(chatMessage) {
     const newReturnedMsg = {
       message: await generateMessage(chatMessage),
-      sender: "Boba Lover",
+      sender: "Boba Lover Bot",
       direction: "incoming"
     }
     return(newReturnedMsg);
@@ -97,15 +97,15 @@ function ChatbotChat() {
             name="Boba Lover"
             src="https://cdn-icons-png.flaticon.com/512/4645/4645924.png"
           />
-          <ConversationHeader.Content info="Active now" userName={"Boba Lover"}/>
+          <ConversationHeader.Content info="Active now" userName={"Boba Lover Bot"}/>
             </ConversationHeader>
-              <MessageList scrollBehavior="smooth" typingIndicator={isTyping ? <TypingIndicator content="BoBa Lover bot is typing" /> : null}>
+              <MessageList scrollBehavior="smooth" typingIndicator={isTyping ? <TypingIndicator content="BoBa Lover Bot is typing" /> : null}>
               <MessageSeparator content="New Conversation"/>
                 {messages.map((message, i) => {
-                  if(message.sender == "Boba Lover")
+                  if(message.sender == "Boba Lover Bot")
                   {
                     return <Message key={i} model={message}> <Avatar
-                      name="Boba Lover"
+                      name="Boba Lover Bot"
                       src="https://cdn-icons-png.flaticon.com/512/4645/4645924.png"
                       /> </Message>
                   }
