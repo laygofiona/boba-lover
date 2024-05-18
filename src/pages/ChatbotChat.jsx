@@ -46,7 +46,7 @@ const generateMessage = async (req_prompt) => {
   return(prediction.text)
 };
 
-function ChatbotChat({shop_name, shop_logo}) {
+function ChatbotChat() {
 
 
   const [isTyping, setIsTyping] = useState(false);
