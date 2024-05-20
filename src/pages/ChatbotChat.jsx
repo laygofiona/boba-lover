@@ -8,7 +8,6 @@ const cohere = new CohereClient({
   // your API key goes below
   // for reference:
   // token: "YOUR_APIKEY_HERE"
-  token: "sXWvHEF98DYGy8cznsl5SxTHttG8Wy6iTNby6Egg",
 });
 
 const generateMessage = async (req_prompt) => {
@@ -54,7 +53,7 @@ function ChatbotChat() {
   const [messages, setMessages] = useState([{
     message: `Hello! I'm a certified Boba-Lover! How can I help you today?`,
     sentTime: "just now",
-    sender: "Boba Lover",
+    sender: "Boba Lover Bot",
     direction: "incoming"
   }]);
 
@@ -82,7 +81,7 @@ function ChatbotChat() {
   async function processMessageToChatbot(chatMessage) {
     const newReturnedMsg = {
       message: await generateMessage(chatMessage),
-      sender: "Boba Lover",
+      sender: "Boba Lover Bot",
       direction: "incoming"
     }
     return (newReturnedMsg);
@@ -97,8 +96,9 @@ function ChatbotChat() {
             name="Boba Lover"
             src="https://cdn-icons-png.flaticon.com/512/4645/4645924.png"
           />
-          <ConversationHeader.Content info="Active now" userName={"Boba Lover"} />
-        </ConversationHeader>
+<<<<<<< HEAD
+  <ConversationHeader.Content info="Active now" userName={"Boba Lover"} />
+        </ConversationHeader >
         <MessageList scrollBehavior="smooth" typingIndicator={isTyping ? <TypingIndicator content="BoBa Lover bot is typing" /> : null}>
           <MessageSeparator content="New Conversation" />
           {messages.map((message, i) => {
@@ -112,7 +112,26 @@ function ChatbotChat() {
           })}
         </MessageList>
         <MessageInput placeholder="Type message in here" onSend={handleSend} />
-      </ChatContainer>
+      </ChatContainer >
+=======
+          <ConversationHeader.Content info="Active now" userName={"Boba Lover Bot"}/>
+            </ConversationHeader>
+              <MessageList scrollBehavior="smooth" typingIndicator={isTyping ? <TypingIndicator content="BoBa Lover Bot is typing" /> : null}>
+              <MessageSeparator content="New Conversation"/>
+                {messages.map((message, i) => {
+                  if(message.sender == "Boba Lover Bot")
+                  {
+                    return <Message key={i} model={message}> <Avatar
+                      name="Boba Lover Bot"
+                      src="https://cdn-icons-png.flaticon.com/512/4645/4645924.png"
+                      /> </Message>
+                  }
+                    return <Message key={i} model={message} />
+                  })}
+              </MessageList>
+              <MessageInput placeholder="Type message in here" onSend={handleSend}/>
+        </ChatContainer>
+>>>>>>> 393e9af9f7d996d619f449483b5bcca47ffbb773
     </>
   )
 }
