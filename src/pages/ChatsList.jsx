@@ -27,7 +27,7 @@ function ChatsList() {
             logo: "https://shopsquareone.com/wp-content/uploads/2021/09/ded478c109b673e1dd6c17a4eaffe9c5d3d085a9.png",
             slogan: "Pearls of joy, in every sip.",
             chatComponent: <ChaTimeChat key="Cha Time" />
-        }, 
+        },
         ];
 
         // add chatbot to data_arr
@@ -53,16 +53,13 @@ function ChatsList() {
     }
 
     useEffect(() => {
-        if(searchInput !== "")
-        {
+        if (searchInput !== "") {
             const newChats = chats.filter((chat) => searchInput.toLowerCase() == chat.name.toLowerCase());
-            if (newChats.length > 0)
-            {
+            if (newChats.length > 0) {
                 setChats(newChats);
             }
         }
-        else
-        {
+        else {
             // set chats to default data
             getChats();
         }
@@ -74,11 +71,10 @@ function ChatsList() {
     }, [])
 
     function handleClick(event) {
-        const selectedName =  event.currentTarget.children[1].children[0].textContent;
+        const selectedName = event.currentTarget.children[1].children[0].textContent;
         let result;
         chats.map(chat => {
-            if(chat.name.toLowerCase() == selectedName.toLowerCase())
-            {
+            if (chat.name.toLowerCase() == selectedName.toLowerCase()) {
                 result = {
                     name: chat.name,
                     logo: chat.logo,
@@ -87,36 +83,35 @@ function ChatsList() {
             }
         });
         setSelectedChat(result);
-        
+
     }
 
 
-    return(
+    return (
         <div className="main-container">
             <MainContainer responsive>
                 <Sidebar position="left" value={searchInput} onChange={handleInput}>
                     <Search placeholder="Search..." />
                     <ConversationList>
                         {chats.map((chat, i) => {
-                            return <Conversation 
-                            info={chat.slogan}
-                            name={chat.name}
-                            key={i}
-                            onClick={(event) => handleClick(event)}
-                          >
-                            <Avatar
-                              name={chat.name}
-                              src={chat.logo}
-                              status="available"
-                            />
-                          </Conversation>
+                            return <Conversation
+                                info={chat.slogan}
+                                name={chat.name}
+                                key={i}
+                                onClick={(event) => handleClick(event)}
+                            >
+                                <Avatar
+                                    name={chat.name}
+                                    src={chat.logo}
+                                    status="available"
+                                />
+                            </Conversation>
                         })}
                     </ConversationList>
                 </Sidebar>
                 {
                     chats.map((chat) => {
-                        if(selectedChat.name.toLowerCase() == chat.name.toLowerCase())
-                        {
+                        if (selectedChat.name.toLowerCase() == chat.name.toLowerCase()) {
                             return chat.chatComponent;
                         }
                     })
