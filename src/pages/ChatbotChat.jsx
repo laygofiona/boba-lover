@@ -96,15 +96,14 @@ function ChatbotChat() {
             name="Boba Lover"
             src="https://cdn-icons-png.flaticon.com/512/4645/4645924.png"
           />
-<<<<<<< HEAD
-  <ConversationHeader.Content info="Active now" userName={"Boba Lover"} />
+          <ConversationHeader.Content info="Active now" userName={"Boba Lover Bot"} />
         </ConversationHeader >
-        <MessageList scrollBehavior="smooth" typingIndicator={isTyping ? <TypingIndicator content="BoBa Lover bot is typing" /> : null}>
+        <MessageList scrollBehavior="smooth" typingIndicator={isTyping ? <TypingIndicator content="BoBa Lover Bot is typing" /> : null}>
           <MessageSeparator content="New Conversation" />
           {messages.map((message, i) => {
-            if (message.sender == "Boba Lover") {
+            if (message.sender == "Boba Lover Bot") {
               return <Message key={i} model={message}> <Avatar
-                name="Boba Lover"
+                name="Boba Lover Bot"
                 src="https://cdn-icons-png.flaticon.com/512/4645/4645924.png"
               /> </Message>
             }
@@ -112,26 +111,7 @@ function ChatbotChat() {
           })}
         </MessageList>
         <MessageInput placeholder="Type message in here" onSend={handleSend} />
-      </ChatContainer >
-=======
-          <ConversationHeader.Content info="Active now" userName={"Boba Lover Bot"}/>
-            </ConversationHeader>
-              <MessageList scrollBehavior="smooth" typingIndicator={isTyping ? <TypingIndicator content="BoBa Lover Bot is typing" /> : null}>
-              <MessageSeparator content="New Conversation"/>
-                {messages.map((message, i) => {
-                  if(message.sender == "Boba Lover Bot")
-                  {
-                    return <Message key={i} model={message}> <Avatar
-                      name="Boba Lover Bot"
-                      src="https://cdn-icons-png.flaticon.com/512/4645/4645924.png"
-                      /> </Message>
-                  }
-                    return <Message key={i} model={message} />
-                  })}
-              </MessageList>
-              <MessageInput placeholder="Type message in here" onSend={handleSend}/>
-        </ChatContainer>
->>>>>>> 393e9af9f7d996d619f449483b5bcca47ffbb773
+      </ChatContainer>
     </>
   )
 }
