@@ -4,7 +4,7 @@ This Web App was made with **React**, **Firebase** (for the cards data) & **Cohe
 
 ## Try it out!
 - Youtube video walkthrough: https://www.youtube.com/watch?v=CRVvdV3T0cE
-- Website (to try it out): https://6649595f11b52551026c103c--lovely-monstera-8dd8f5.netlify.app/
+- Website (to try it out): https://lovely-monstera-8dd8f5.netlify.app/
 
 ## What is it about?
 BobaLover is a platform created by the members of a passionate team, that aims to curate an experience for people trying out boba for the first-time and for professional boba-lovers alike. Our app **keeps track of the boba stores that you've liked**, and **allows you to communicate with them**! This creates a personalised experience for the viewer.
